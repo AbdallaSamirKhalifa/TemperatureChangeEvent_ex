@@ -1,0 +1,1 @@
+# Training for  events and delegations on console app

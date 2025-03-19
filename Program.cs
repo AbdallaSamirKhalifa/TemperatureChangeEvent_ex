@@ -56,6 +56,26 @@ public class Display
     }
     public void HandleTempratureChange(object sensder,TemperatureChangedEventArgs e)
     {
+        Console.WriteLine("\n\n  Display Class:");
+
+        Console.WriteLine("\n\n  Temprature Changed:");
+        Console.WriteLine($"Temprature Changed From {e.OldTemprature}°C");
+        Console.WriteLine($"Temprature Changed To {e.NewTemprature}°C");
+        Console.WriteLine($"Temprature Diffrence Is {e.Diffrence}°C");
+
+    }
+}
+
+public class Print
+{
+
+    public void Subscribe(Thermostat thermostat)
+    {
+        thermostat.TempratureChanged += HandleTempratureChange;
+    }
+    public void HandleTempratureChange(object sensder,TemperatureChangedEventArgs e)
+    {
+        Console.WriteLine("\n\n  Print Class:");
         Console.WriteLine("\n\n  Temprature Changed:");
         Console.WriteLine($"Temprature Changed From {e.OldTemprature}°C");
         Console.WriteLine($"Temprature Changed To {e.NewTemprature}°C");
@@ -69,6 +89,8 @@ class Program
     {
         Thermostat thermostat = new Thermostat();
         Display display = new Display();
+        Print print = new Print();
+        print.Subscribe(thermostat);
         display.Subscribe(thermostat);
 
         thermostat.SetTemptrature(25);

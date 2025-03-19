@@ -36,7 +36,7 @@ public class Thermostat
         }
     }
 
-    public void OnTempratureChanged(TemperatureChangedEventArgs e)
+    protected virtual void OnTempratureChanged(TemperatureChangedEventArgs e)
     {
         TempratureChanged?.Invoke(this, e);
     }
